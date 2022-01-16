@@ -9,7 +9,6 @@ const bot = new Client({
   });
 
 bot.on('guildMemberAdd', member => {
-    console.log(member)
     let m = new MessageEmbed()
     .setTitle(`Willkommen auf ${member.guild.name}, ${member.user.username}`)
     .setThumbnail(member.guild.iconURL())
