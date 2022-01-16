@@ -1,0 +1,15 @@
+{
+    "welcome_message": {
+        "rollevergabe": "919239870445142075",
+        "abmeldung": "924715045340975104",
+        "desc": "In dieser Nachricht wird dir alles wichtige rund um den Server erklärt",
+        "field1": {
+            "0": "Bevor du etwas anderes schreibst MUSST du vorher diesen Schritt befolgen!",
+            "1": "In den Channel gehört: \"Rangnummer | InGame Name | ServerID\"",
+            "2": "_Beispiel: \"4 | Max Mustermann | 1234\"_"
+        },
+        "field2": {
+            "0": "Hier kannst du nicht für **EINEN TAG** abmelden."
+        }
+    }
+}

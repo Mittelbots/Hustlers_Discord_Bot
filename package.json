@@ -1,0 +1,24 @@
+{
+  "name": "joinbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "prod": "pm2 start index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mittelbots/JoinBot.git"
+  },
+  "author": "BlackDayz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mittelbots/JoinBot/issues"
+  },
+  "homepage": "https://github.com/Mittelbots/JoinBot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "nodemon": "^2.0.15"
+  }
+}
