@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "prod": "pm2 start index.js"
+    "prod": "pm2 start index.js --name JoinBot",
+    "kill": "pm2 delete JoinBot"
   },
   "repository": {
     "type": "git",
