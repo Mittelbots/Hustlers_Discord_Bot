@@ -1,5 +1,7 @@
 {
     "guild_id": "919239870407389205",
+    "debug": false,
+    "prefix": "?",
     "welcome_message": {
         "rollevergabe": "919239870445142075",
         "abmeldung": "924715045340975104",

@@ -2,18 +2,26 @@ const {
     Client,
     MessageEmbed,
     MessageActionRow,
-    MessageButton
+    MessageButton,
+    GuildMember,
+    Collection,
+    DiscordAPIError
 } = require("discord.js");
 
 const token = require('./token.json');
 
 const config = require('./config.json');
+const { deployCommands } = require("./utils/functions/deploycommands/deploycommands");
 
 const bot = new Client({
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"]
 });
 
+bot.commands = new Collection()
+deployCommands(bot)
+
 bot.on('guildMemberAdd', member => {
+    if(config.debug) return;
     let m = new MessageEmbed()
         .setTitle(`Willkommen auf ${member.guild.name}, ${member.user.username}`)
         .setThumbnail(member.guild.iconURL())
@@ -37,18 +45,23 @@ bot.on('messageCreate', async message => {
     if (message.channel.type === "dm") return;
     if (message.author.system) return;
 
-    if (message.channel.id === config.welcome_message.rollevergabe) { //#rollenvergabe
-        /**
-        TO-DO
-            - User schreibt message 9 | name | 123 ✅
-            - bot reagiert drauf x und hacken ✅
-            - reaction only with 8-10 roles ✅
-            - wenn hacken -> give author roles + change nickname to message.content ✅
-            - wenn x -> send dm to user with right template + delete message ✅
-        */
-        // await message.react(bot.emojis.cache.get(config.reaction.emotes.accept)).catch(err => {/** NO PERMISSION */ console.log(err) });
-        // await message.react(bot.emojis.cache.get(config.reaction.emotes.deny)).catch(err => {/** NO PERMISSION */ console.log(err)});
+    let messagearray = message.content.split(" ");
+    let cmd = messagearray[0];
+    let args = messagearray.slice(1);
+    if (cmd.startsWith(config.prefix)){
+        
+        let _commands = bot.commands.get(cmd.slice(config.prefix.length))
+        
+        if (!_commands) return;
+        _commands.run(bot, message, args);
 
+    }
+
+
+
+    if (message.channel.id === config.welcome_message.rollevergabe && config.debug == false) { //#rollenvergabe
+        
+        message.content = message.content.replaceAll('/', '|');
 
         const accept = 'accept';
         const deny = 'deny';
@@ -101,6 +114,7 @@ bot.on('messageCreate', async message => {
                 if (message.content[x] === '1' && message.content[x + 1] === '0') {
                     sentMessage.delete();
                     message.delete();
+                    //TODO ADD EMBED
                     return message.author.send(`Deine Nachricht in ${message.guild.channels.cache.get(config.welcome_message.rollevergabe)} wurde abgewiesen. Da kein antrag auf die Rolle "10" gegeben werden darf.`); 
                 }
                 message.delete();
@@ -142,7 +156,7 @@ bot.on('messageCreate', async message => {
         });
     }
 
-    if (message.content === '!d') {
+    if (message.content === '!d' && config.debug) {
         let m = new MessageEmbed()
             .setTitle(`Willkommen auf ${message.guild.name}, ${message.author.username}`)
             .setThumbnail(message.guild.iconURL())
