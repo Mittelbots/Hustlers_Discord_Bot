@@ -3,9 +3,7 @@ const {
     MessageEmbed,
     MessageActionRow,
     MessageButton,
-    GuildMember,
     Collection,
-    DiscordAPIError
 } = require("discord.js");
 
 const token = require('./token.json');
@@ -58,9 +56,9 @@ bot.on('messageCreate', async message => {
 
     }
 
+    if(config.debug) return;
 
-
-    if (message.channel.id === config.welcome_message.rollevergabe && config.debug == false) { //#rollenvergabe
+    if (message.channel.id === config.welcome_message.rollevergabe) { //#rollenvergabe
         
         message.content = message.content.replaceAll('/', '|');
 
@@ -177,7 +175,7 @@ bot.on('messageCreate', async message => {
 
 bot.once('ready', () => {
     console.log('BOT STARTED!!')
-    bot.guilds.cache.get(config.guild_id).channels.cache.get(config.welcome_message.rollevergabe).send(`**Bot neugestartet.** \nAnfragen die noch nicht aktzeptiert oder abgelehnt wurden MÜSSEN erneut geschrieben werden!`)
+    if(!config.debug) bot.guilds.cache.get(config.guild_id).channels.cache.get(config.welcome_message.rollevergabe).send(`**Bot neugestartet.** \nAnfragen die noch nicht aktzeptiert oder abgelehnt wurden MÜSSEN erneut geschrieben werden!`)
 });
 
 bot.login(token.token)
