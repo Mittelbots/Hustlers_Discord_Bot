@@ -1,0 +1,38 @@
+{
+    "guild_id": "919239870407389205",
+    "debug": false,
+    "prefix": "?",
+    "welcome_message": {
+        "rollevergabe": "919239870445142075",
+        "abmeldung": "924715045340975104",
+        "desc": "In dieser Nachricht wird dir alles wichtige rund um den Server erklärt",
+        "field1": {
+            "0": "Bevor du etwas anderes schreibst MUSST du vorher diesen Schritt befolgen!\n",
+            "1": "In den Channel gehört: \n \n \"**Rangnummer | InGame Name | ServerID**\" ",
+            "2": "_Beispiel: \"4 | Max Mustermann | 1234\"_"
+        },
+        "field2": {
+            "0": "\nHier kannst du dich bei Krankheit oder Abwesenheit abmelden."
+        }
+    },
+    "reaction": {
+        "emotes": {
+            "accept": "925310629907165214",
+            "deny": "925310629873598524"
+        },
+        "allowed_roles": ["924713625493577728", "924713622008102983", "924713619034374204"]
+    },
+    "member_role": "919351802061799464",
+    "roles": {
+        "1": "924713434266886185",
+        "2": "924713485579997185",
+        "3": "924713505096085574",
+        "4": "924713521005076611",
+        "5": "924713555624869928",
+        "6": "924713555624869928",
+        "7": "924713604308144128",
+        "8": "924713619034374204",
+        "9": "924713622008102983",
+        "10": "924713625493577728"
+    }
+}
