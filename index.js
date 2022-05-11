@@ -175,7 +175,7 @@ bot.on('messageCreate', async message => {
 
 bot.once('ready', () => {
     console.log('BOT STARTED!!')
-    if(!config.debug) bot.guilds.cache.get(config.guild_id).channels.cache.get(config.welcome_message.rollevergabe).send(`**Bot neugestartet.** \nAnfragen die noch nicht aktzeptiert oder abgelehnt wurden MÜSSEN erneut geschrieben werden!`)
+    if(!config.debug) bot.guilds.cache.get(config.guild_id).channels.cache.get(config.welcome_message.rollevergabe).send(`**Bot neugestartet.** \nAnfragen, die noch nicht akzeptiert oder abgelehnt wurden, **MÜSSEN** erneut geschrieben werden!`)
 });
 
 bot.login(token.token)
